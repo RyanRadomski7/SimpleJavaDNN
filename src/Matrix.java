@@ -1,6 +1,13 @@
 import java.util.Random;
 
+/*
+ * The matrix class is a set of matrix math functions designed to be as fast as possible given 2d arrays
+ * Functions are void and instead write directly to an input matrix
+ */
 public class Matrix {
+	//TODO add functionality to do matrix math on matrices stored in 1d arrays for more efficient caching
+	//     add functionality for multithreading for speedups on large matrices
+
 	private static Random rand = new Random();
 	
 	//subtracts each corresponding element of m1 and m2 and stores the resutl in m3
@@ -30,14 +37,11 @@ public class Matrix {
 	//stores the dot product of m1 and m2 in m3
 	public static void matrix2dDot(double[][] m1, double[][] m2, double[][] m3) {
 		double sum = 0;
-		
+
 		for(int i = 0; i < m1.length; i++) {
 			for(int j = 0; j < m2[0].length; j++) {
 				sum = 0;
-
-				for(int k = 0; k < m1[0].length; k++) {
-					sum += m1[i][k] * m2[k][j];
-				}
+				for(int k = 0; k < m1[0].length; k++) sum += m1[i][k] * m2[k][j];
 				m3[i][j] = sum;
 			}
 		}
@@ -78,12 +82,11 @@ public class Matrix {
 	//takes the dot product of m1 and the transpose of m2 and stores the result in m3
 	public static void matrix2dTransposeNormDot(double[][] m1, double[][] m2, double[][] m3) {
 		double sum;
+		
 		for(int i = 0; i < m1[0].length; i++) {
 			for(int j = 0; j < m2[0].length; j++) {
 				sum = 0;
-				for(int k = 0; k < m1.length; k++) {
-					sum += m1[k][i] * m2[k][j];
-				}
+				for(int k = 0; k < m1.length; k++) sum += m1[k][i] * m2[k][j];
 				m3[i][j] = sum;
 			}
 		}
@@ -92,12 +95,11 @@ public class Matrix {
 	//takes the dot product of m1 and the transpose of m2 and stores the result in m3
 	public static void matrix2dNormTransposeDot(double[][] m1, double[][] m2, double[][] m3) {
 		double sum = 0;
+		
 		for(int i = 0; i < m1.length; i++) {
 			for(int j = 0; j < m2.length; j++) {
 				sum = 0;
-				for(int k = 0; k < m1[0].length; k++) {
-					sum += m1[i][k] * m2[j][k];
-				}
+				for(int k = 0; k < m1[0].length; k++) sum += m1[i][k] * m2[j][k];
 				m3[i][j] = sum;
 			}
 		}

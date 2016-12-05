@@ -16,11 +16,13 @@ public class XORDemo{
 	};
 	
 	public static void main(String[] args) {
+		//initialise network and give hyperparamaters
 		Network net = new Network(2, 5, 1, 4, Network.TANH);
 		net.setInput(input);
 		net.setTarget(target);
 		net.setLearnRate(.0100);
 
+		//train until error reaches an average of 5%
 		net.trainAccuracy(.01, 10000);
 		
 		System.out.println("prediction");
